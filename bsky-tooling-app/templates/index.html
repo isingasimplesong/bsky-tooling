@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Merge Bluesky Starter Packs</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+</head>
+<body class="bg-light">
+    <div class="container py-5">
+        <h1 class="mb-4">Merge Bluesky Starter Packs</h1>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        <div class="mb-4">
+            {% for category, message in messages %}
+            <div class="alert alert-{{ category }}">{{ message }}</div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% endwith %}
+
+        <form method="POST" class="card p-4 bg-white shadow rounded">
+            <div class="mb-3">
+                <label for="handle" class="form-label">Your BSky Handle</label>
+                <input type="text" id="handle" name="handle" class="form-control" placeholder="user.bsky.social" required>
+            </div>
+            <div class="mb-3">
+                <label for="apppassword" class="form-label">Your BSky App Password</label>
+                <input type="password" id="apppassword" name="apppassword" class="form-control" placeholder="abcd-1234-fghi-5678" required>
+            </div>
+            <div class="mb-3">
+                <label for="packurl" class="form-label">Target Starter Pack URL</label>
+                <input type="text" id="packurl" name="packurl" class="form-control" placeholder="https://bsky.app/starter-pack/user.bsky.social/abc123" required>
+            </div>
+            <div class="mb-3">
+                <label for="packsrcurl" class="form-label">Source Starter Pack URL</label>
+                <input type="text" id="packsrcurl" name="packsrcurl" class="form-control" placeholder="https://bsky.app/starter-pack/user.bsky.social/def456" required>
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary">Merge Starter Packs</button>
+            </div>
+        </form>
+        <p class="text-muted mt-2">* Note: You can only have 150 accounts in a starter pack.</p>
+    </div>
+</body>
+</html>
